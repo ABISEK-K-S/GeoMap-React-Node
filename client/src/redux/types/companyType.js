@@ -1,0 +1,3 @@
+export const COMPANY = {
+  UPDATE_COMPANY_DATA: "UPDATE_COMPANY_DATA"
+};
