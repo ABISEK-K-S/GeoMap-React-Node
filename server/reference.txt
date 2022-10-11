@@ -1,0 +1,16 @@
+CREATE TABLE `users` ( `first_name` varchar(150) NOT NULL,`last_name` varchar(150) NOT NULL,`email` varchar(150) NOT NULL,
+ `designation` varchar(150) NOT NULL, `dob` DATE,
+ `active` boolean DEFAULT false );
+
+
+ALTER TABLE USERS ADD USER_ID varchar(150) NOT NULL;
+
+
+INSERT INTO users(first_name, last_name, email,designation,dob,active,user_id)
+VALUES (first_name, last_name, email,designation,dob,active,user_id);
+
+
+update users set USER_ID="5587" where first_name="abisek;
+
+
+root@localhost:3306

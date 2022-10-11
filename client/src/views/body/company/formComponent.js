@@ -1,8 +1,10 @@
 import React, { Component, useEffect, useState } from "react";
 import { Formik } from "formik";
 import MapChart from "./mapChart";
+import Employee from "./employee";
 
 function FormData(props) {
+  const [EmployeeList, updateEmployeeList] = useState([]);
   const [initialData, ModifyInitialData] = useState({
     COMPANY_NAME: props.selectedData?.COMPANY_NAME
       ? props.selectedData.COMPANY_NAME
@@ -16,6 +18,11 @@ function FormData(props) {
   });
 
   useEffect(() => {
+    props.selectedData.users &&
+      updateEmployeeList(JSON.parse(props.selectedData.users));
+  }, [props.selectedData?.users]);
+
+  useEffect(() => {
     ModifyInitialData({
       COMPANY_NAME: props.selectedData?.COMPANY_NAME
         ? props.selectedData.COMPANY_NAME
@@ -27,7 +34,7 @@ function FormData(props) {
         ? props.selectedData.COORDINATES
         : ""
     });
-  }, [props.selectedData.COMPANY_NAME]);
+  }, [props.selectedData?.COMPANY_NAME]);
 
   useEffect(() => {
     return () => {
@@ -144,20 +151,27 @@ function FormData(props) {
                 <div>
                   <input
                     type="submit"
-                    className="btn btn-primary row mt-2 mb-2"
+                    className="btn btn-primary  mt-2 mb-2"
                     disabled={isSubmitting}
                   />
                 </div>
                 {props.source !== "newCompany" && (
-                  <div className="row">
+                  <div className="row m-2">
                     <button
                       type="button"
-                      className="btn btn-danger row mt-2 mb-2"
+                      className="btn btn-danger mt-2 mb-2"
                       onClick={() =>
                         props.deleteCompany({ COMPANY_ID: values.COMPANY_ID })
                       }
                     >
                       Delete
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-success mt-2 mb-2"
+                      onClick={() => props.updateUserList(true)}
+                    >
+                      View Employees
                     </button>
                   </div>
                 )}
@@ -167,7 +181,16 @@ function FormData(props) {
         </Formik>
       </div>
       {props.source !== "newCompany" && (
-        <div className="col">{<MapChart {...props} />}</div>
+        <div className="col-7">{<MapChart {...props} />}</div>
+      )}
+      {props.source !== "newCompany" && props.showUserList && (
+        <div className="col-1">
+          <Employee
+            {...props}
+            EmployeeList={EmployeeList}
+            updateEmployeeList={updateEmployeeList}
+          />
+        </div>
       )}
     </div>
   );

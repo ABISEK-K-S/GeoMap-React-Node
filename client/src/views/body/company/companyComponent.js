@@ -6,6 +6,8 @@ function Company(props) {
   const [selectedData, updateSelectedData] = useState({});
   const [showForm, updateForm] = useState(false);
   const [source, updateSource] = useState("");
+  const [showUserList, updateUserList] = useState(false);
+
   useEffect(() => {
     props.getCompanyData();
   }, []);
@@ -24,6 +26,7 @@ function Company(props) {
     updateSelectedData(currentData);
     updateForm(true);
     updateSource("");
+    updateUserList(false);
   };
 
   return (
@@ -59,6 +62,8 @@ function Company(props) {
             selectedData={selectedData}
             updateSelectedData={updateSelectedData}
             source={source}
+            showUserList={showUserList}
+            updateUserList={updateUserList}
           />
         )}
       </div>

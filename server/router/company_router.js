@@ -48,52 +48,27 @@ companyRouter.put("/update", (req, res) => {
       .json({ outcome: "success", message: "Company updated successfully!" });
   });
 });
-
-// companyRouter.get("/modify-company/", (req, res) => {
-//   //true false
-//   console.log("use account will be modified");
-//   let status = "add";
-//   let COMPANY_ID = req.body?.COMPANY_ID ? req.body.COMPANY_ID : 0;
-//   let USER_ID = req.body?.USER_ID ? req.body.USER_ID : 0;
-//   COMPANY_ID = "S78547";
-//   USER_ID = "5448";
-//   status = "delete";
-
-//   if (status === "add") {
-//   } else {
-//     const searchQuery = `select users from companies where COMPANY_ID="${COMPANY_ID}"`;
-//     let query = connection.query(searchQuery, (err, result, data) => {
-//       var array = JSON.parse(result[0].users);
-//       const verifyID = array.find((data) => data == USER_ID);
-//       if (verifyID) {
-//         console.log("User ID found", USER_ID, array);
-//         array.splice(array.indexOf(`${USER_ID}`), 1);
-//         array.forEach((data) => `"${data}"`);
-//         console.log(array, "arrya");
-//         let abisek = () => {
-//           return array.map((i) => {
-//             return i;
-//           });
-//         };
-//         // let sql = `UPDATE company SET users=[${array}] where COMPANY_ID="${COMPANY_ID}"`;
-//         let sql = `UPDATE company SET users=${[
-//           abisek(),
-//         ]} where COMPANY_ID="${COMPANY_ID}"`;
-
-//         console.log(sql);
-//         let query = connection.query(sql, (err, data) => {
-//           console.log(data, "output");
-//           if (err) throw err;
-//           res.status(200).send({ outcome: "success" });
-//         });
-//       } else {
-//         console.log("id not found");
-//         res.send(`${USER_ID} is not found`);
-//       }
-//       // res.send(result);
-//     });
-//   }
-// });
+companyRouter.delete("/remove-user", (req, res) => {
+  console.log("user will be removed from the company", req.query);
+  let COMPANY_ID = req.query?.company_id ? req.query.company_id : 0;
+  let USER_LIST = req.query?.user_list ? req.query.user_list : 0;
+  let USER_ID = req.query?.user_id ? req.query.user_id : 0;
+  let array = [];
+  const temp = Object.entries(JSON.parse(USER_LIST)).map((data) => {
+    if (data[1] !== USER_ID) {
+      array.push(`"${data[1]}"`);
+    }
+  });
+  let sql = `update companies set users='[${array}]' where COMPANY_ID="${COMPANY_ID}"`;
+  console.log(sql);
+  let query = connection.query(sql, (err, data) => {
+    console.log(data, "output");
+    if (err) throw err;
+    res
+      .status(200)
+      .json({ outcome: "success", message: "User removed from the company!" });
+  });
+});
 
 companyRouter.delete("/delete", (req, res) => {
   console.log("company will be deleted");
