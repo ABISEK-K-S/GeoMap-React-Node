@@ -3,7 +3,7 @@
 
 * An application to view the list of users and companies.
 * User page will list all employee details and we can modify the user details and new user can be created if required.
-* Company page will show the company list and new company can be created.
+* Company page will show the company list and new companies can be created.
 * Also, we can remove a specific user in a company
 
 
