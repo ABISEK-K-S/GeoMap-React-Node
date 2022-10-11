@@ -15,18 +15,18 @@ CREATE TABLE `companies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `companies` (`COMPANY_ID`, `COMPANY_NAME`, `COORDINATES`, `users`) VALUES
-('S78547', 'SAMSUNG', '2.2426, 53.4808', '\r\n[\"5459\",\"5448\",\"5428\",\"5188\",\"5787\"]\r\n\r\n\r\n');
+('S78547', 'SAMSUNG', '2.2426, 53.4808', '[\"7889\", \"5846\" ]');
 INSERT INTO `companies` (`COMPANY_ID`, `COMPANY_NAME`, `COORDINATES`, `users`) VALUES
-('M98954', 'MOTOROLA', '10.2426, 60.4808', '\"[\'5587\']\"');
+('M98954', 'MOTOROLA', '10.2426, 60.4808', '[\"7889\", \"5846\" ,\"2949\",\"9998\",\"9659\",\"9380\"]');
 INSERT INTO `companies` (`COMPANY_ID`, `COMPANY_NAME`, `COORDINATES`, `users`) VALUES
-('R65954', 'REDMI', '20.2426, 53.4808', NULL);
+('R65954', 'REDMI', '20.2426, 53.4808', '[\"8575\",\"5544\",\"7458\"]');
 INSERT INTO `companies` (`COMPANY_ID`, `COMPANY_NAME`, `COORDINATES`, `users`) VALUES
-('RT785D55', 'Tesla', '10.2426, 40.4808', NULL),
-('I7878', 'Facebook', '5.2426, 45.4808', NULL),
-('F87182S', ' APPLE', '28.6517178,77.2219388', NULL),
-('HT8548D', 'Vivo', '28.6517178,77.2219388', NULL),
-('MY874598', ' Xiomi', '5.2426, 45.4808', NULL),
-('BH874598', ' Volvo ', '5.2426, 55.4808', NULL);
+('RT785D55', 'Tesla', '10.2426, 40.4808', '[\"7889\"]'),
+('I7878', 'Facebook', '5.2426, 45.4808', '[\"7889\", \"5846\" ]'),
+('F87182S', ' APPLE', '28.6517178,77.2219388', '[\"7848\" ]'),
+('HT8548D', 'Vivo', '28.6517178,77.2219388', '[\"9415\",\"4818\"]'),
+('MY874598', ' Xiomi', '5.2426, 45.4808', '[\"8488\"]'),
+('BH874598', ' Volvo ', '5.2426, 55.4808', '[\"5846\"]');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

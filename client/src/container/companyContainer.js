@@ -4,7 +4,8 @@ import {
   changeCompanyDetails,
   createCompany,
   deleteCompany,
-  getCompanyData
+  getCompanyData,
+  removeUserFromCompany
 } from "../redux/actions/companyAction";
 import { connect } from "react-redux";
 
@@ -18,7 +19,8 @@ const mapDispatchToProps = (dispatch) => {
     getCompanyData: (data) => dispatch(getCompanyData(data)),
     createCompany: (data) => dispatch(createCompany(data)),
     changeCompanyDetails: (data) => dispatch(changeCompanyDetails(data)),
-    deleteCompany: (data) => dispatch(deleteCompany(data))
+    deleteCompany: (data) => dispatch(deleteCompany(data)),
+    removeUserFromCompany: (data) => dispatch(removeUserFromCompany(data))
   };
 };
 

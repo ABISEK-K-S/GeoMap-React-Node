@@ -28,27 +28,29 @@ const MapChart = (props) => {
           ))
         }
       </Geographies>
-      <Annotation
-        subject={props.selectedData?.COORDINATES?.split(",")}
-        dx={-90}
-        dy={-30}
-        connectorProps={{
-          stroke: "#FF5533",
-          strokeWidth: 3,
-          strokeLinecap: "round"
-        }}
-      >
-        <text
-          x="-8"
-          textAnchor="end"
-          alignmentBaseline="middle"
-          fill="#F53"
-          stroke="#F53"
-          fontSize="30px"
+      {props.selectedData?.COORDINATES && (
+        <Annotation
+          subject={props.selectedData.COORDINATES?.split(",")}
+          dx={-90}
+          dy={-30}
+          connectorProps={{
+            stroke: "#FF5533",
+            strokeWidth: 3,
+            strokeLinecap: "round"
+          }}
         >
-          {props.selectedData.COMPANY_NAME}
-        </text>
-      </Annotation>
+          <text
+            x="-8"
+            textAnchor="end"
+            alignmentBaseline="middle"
+            fill="#F53"
+            stroke="#F53"
+            fontSize="30px"
+          >
+            {props.selectedData?.COMPANY_NAME}
+          </text>
+        </Annotation>
+      )}
     </ComposableMap>
   );
 };

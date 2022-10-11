@@ -89,3 +89,24 @@ export const deleteCompany = (data) => async (dispatch) => {
       console.error(error);
     });
 };
+
+export const removeUserFromCompany = (data) => async (dispatch) => {
+  var requestData = {
+    method: "DELETE",
+    url: "http://localhost:3000/company/remove-user",
+    params: data,
+    headers: {}
+  };
+  axios
+    .request(requestData)
+    .then(function (response) {
+      if (response.data.outcome === "success") {
+        toast.success(response.data.message);
+        dispatch(getCompanyData());
+      }
+    })
+    .catch(function (error) {
+      toast.error(error);
+      console.error(error);
+    });
+};
