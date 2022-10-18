@@ -20,12 +20,8 @@ function App() {
         pauseOnHover
       />
       <div className="container">
-        <div className="row">
-          <div className="col col-9">
-            <Header />
-            <RouteComponent />
-          </div>
-        </div>
+        <Header />
+        <RouteComponent />
       </div>
     </BrowserRouter>
   );

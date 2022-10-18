@@ -11,22 +11,23 @@ CREATE TABLE `companies` (
   `COMPANY_ID` varchar(150) NOT NULL,
   `COMPANY_NAME` varchar(150) NOT NULL,
   `COORDINATES` varchar(150) NOT NULL,
-  `users` varchar(255) DEFAULT NULL
+  `users` varchar(255) DEFAULT NULL,
+  `ADDRESS` varchar(255) NOT NULL DEFAULT 'NULL'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `companies` (`COMPANY_ID`, `COMPANY_NAME`, `COORDINATES`, `users`) VALUES
-('S78547', 'SAMSUNG', '2.2426, 53.4808', '[\"7889\", \"5846\" ]');
-INSERT INTO `companies` (`COMPANY_ID`, `COMPANY_NAME`, `COORDINATES`, `users`) VALUES
-('M98954', 'MOTOROLA', '10.2426, 60.4808', '[\"7889\", \"5846\" ,\"2949\",\"9998\",\"9659\",\"9380\"]');
-INSERT INTO `companies` (`COMPANY_ID`, `COMPANY_NAME`, `COORDINATES`, `users`) VALUES
-('R65954', 'REDMI', '20.2426, 53.4808', '[\"8575\",\"5544\",\"7458\"]');
-INSERT INTO `companies` (`COMPANY_ID`, `COMPANY_NAME`, `COORDINATES`, `users`) VALUES
-('RT785D55', 'Tesla', '10.2426, 40.4808', '[\"7889\"]'),
-('I7878', 'Facebook', '5.2426, 45.4808', '[\"7889\", \"5846\" ]'),
-('F87182S', ' APPLE', '28.6517178,77.2219388', '[\"7848\" ]'),
-('HT8548D', 'Vivo', '28.6517178,77.2219388', '[\"9415\",\"4818\"]'),
-('MY874598', ' Xiomi', '5.2426, 45.4808', '[\"8488\"]'),
-('BH874598', ' Volvo ', '5.2426, 55.4808', '[\"5846\"]');
+INSERT INTO `companies` (`COMPANY_ID`, `COMPANY_NAME`, `COORDINATES`, `users`, `ADDRESS`) VALUES
+('S78547', 'SAMSUNG', '2.2426, 53.4808', '[\"7889\", \"5846\" ]', '31, Ram street, Chennai-600128');
+INSERT INTO `companies` (`COMPANY_ID`, `COMPANY_NAME`, `COORDINATES`, `users`, `ADDRESS`) VALUES
+('M98954', 'MOTOROLA', '10.2426, 60.4808', '[\"7889\",\"5846\",\"2949\",\"9998\"]', '841, Sivan street, Chennai-657857');
+INSERT INTO `companies` (`COMPANY_ID`, `COMPANY_NAME`, `COORDINATES`, `users`, `ADDRESS`) VALUES
+('R65954', 'REDMI', '20.2426, 53.4808', '[\"8575\",\"5544\",\"7458\"]', '235, North street, Chennai-682701');
+INSERT INTO `companies` (`COMPANY_ID`, `COMPANY_NAME`, `COORDINATES`, `users`, `ADDRESS`) VALUES
+('RT785D55', 'Tesla', '10.2426, 40.4808', '[\"7889\"]', '45WE, Besar street, Mumbai-698247'),
+('I7878', 'Facebook', '5.2426, 45.4808', '[\"7889\", \"5846\" ]', '33, Main street, Bangalore-501245'),
+('F87182S', ' APPLE', '28.6517178,77.2219388', '[\"7848\" ]', '985, South street, Nepal-857425'),
+('HT8548D', 'Vivo', '28.6517178,77.2219388', '[\"9415\",\"4818\"]', '65AQ, Besar street, Mumbai-698247'),
+('MY874598', ' Xiomi', '5.2426, 45.4808', '[\"8488\"]', 'TE78, West street, Chennai-600258'),
+('BH874598', ' Volvo ', '5.2426, 55.4808', '[\"5846\"]', 'MK78, North street, Chennai-704589');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

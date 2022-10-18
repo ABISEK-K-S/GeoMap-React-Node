@@ -1,3 +1,13 @@
-.badge-color{
-    background-color: rgb(136, 46, 46);
+.badge-color {
+  background-color: rgb(136, 46, 46);
+}
+
+.bg-shade1 {
+  background-color: #dbdbdb;
+  border: none;
+}
+
+label {
+  color: #198754;
+  font-weight: bold;
 }

@@ -54,8 +54,8 @@ function FormData(props) {
   }, []);
 
   return (
-    <div className="container">
-      <h5 className="text-center custom-bg">User Details</h5>
+    <div className="row border rounded">
+      <h5 className="text-center">User Details</h5>
       <Formik
         enableReinitialize
         initialValues={initialData}
@@ -106,151 +106,132 @@ function FormData(props) {
           handleSubmit,
           touched
         }) => (
-          <form onSubmit={handleSubmit} className="text-center">
-            <div className="row">
-              <div className="col col-12  font-weight-bold">First Name</div>
-              <div className="col">
-                <input
-                  type="text"
-                  name="first_name"
-                  id="name"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.first_name}
-                />
-              </div>
-            </div>
+          <form onSubmit={handleSubmit}>
+            <label>First Name</label>
+            <input
+              type="text"
+              name="first_name"
+              id="name"
+              className="form-control"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.first_name}
+            />
             <div className="text-danger">
               {errors.first_name && touched.first_name && errors.first_name}
             </div>
-            <div className="row">
-              <div className="col col-12  font-weight-bold">Last Name</div>
-              <div className="col">
-                <input
-                  type="text"
-                  name="last_name"
-                  id="name"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.last_name}
-                />
-              </div>
-            </div>
+            <label>Last Name</label>
+            <input
+              type="text"
+              name="last_name"
+              id="name"
+              className="form-control"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.last_name}
+            />
             <div className="text-danger">
               {errors.last_name && touched.last_name && errors.last_name}
             </div>
-            <div className="row">
-              <div className="col col-12  font-weight-bold">Designation</div>
-              <div className="col">
-                <input
-                  type="text"
-                  name="designation"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.designation}
-                />
-              </div>
-            </div>
+            <label>Designation</label>
+            <input
+              type="text"
+              name="designation"
+              className="form-control"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.designation}
+            />
             <div className="text-danger">
               {errors.designation && touched.designation && errors.designation}
             </div>
-            <div className="row">
-              <div className="col col-12 font-weight-bold">Email</div>
-              <div className="col">
-                <input
-                  type="email"
-                  name="email"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                />
-              </div>
-            </div>
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              className="form-control"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}
+            />
             <div className="text-danger">
               {errors.email && touched.email && errors.email}
             </div>
-            <div className="row">
-              <div className="col col-12  font-weight-bold">Status</div>
-              <div className="col-12  font-weight-bold">
-                <span className="badge badge-color m-1">Active=1</span>
-                <span className="badge badge-color m-1">Deactivate=2</span>
-              </div>
-              <div className="col">
-                <input
-                  type="text"
-                  name="active"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.active}
-                />
-              </div>
+            <label>Status</label>
+            <div>
+              <input
+                type="radio"
+                name="active"
+                className="form-check-input mx-2 mb-3"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={1}
+                checked={values.active == 1}
+              />
+              <span>Active</span>
+              <input
+                type="radio"
+                name="active"
+                className="form-check-input mx-2"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={2}
+                checked={values.active == 2}
+              />
+              <span>In-active</span>
             </div>
             <div className="text-danger">
               {errors.active && touched.active && errors.active}
             </div>
-            <div className="row">
-              <div className="col-12  font-weight-bold">USER ID</div>
-
+            <label>
+              USER ID
               {props.source !== "newUser" && (
-                <div className="col-12  font-weight-bold">
-                  <span className="badge badge-color m-1">
-                    Id disabled while editing
-                  </span>
-                </div>
+                <span class="form-text text-muted">
+                  {" "}
+                  (Id disabled while editing)
+                </span>
               )}
+            </label>
 
-              <div className="col">
-                <input
-                  type="number"
-                  name="user_id"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  disabled={props.source === "newUser" ? false : true}
-                  value={values.user_id}
-                />
-              </div>
-            </div>
+            <input
+              type="number"
+              name="user_id"
+              className="form-control"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              disabled={props.source === "newUser" ? false : true}
+              value={values.user_id}
+            />
             <div className="text-danger">
               {errors.user_id && touched.user_id && errors.user_id}
             </div>
-            <div className="row">
-              <div className="col col-12  font-weight-bold">Date of Birth</div>
-              <div className="col">
-                <input
-                  type="date"
-                  name="dob"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.dob}
-                />
-              </div>
-            </div>
+            <label>Date of Birth</label>
+            <input
+              type="date"
+              name="dob"
+              className="form-control"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.dob}
+            />
+
             <div className="text-danger">
               {errors.dob && touched.dob && errors.dob}
             </div>
-
-            <div className="row">
-              <div>
-                <input
-                  type="submit"
-                  className="btn btn-primary row mt-2 mb-2"
-                  disabled={isSubmitting}
-                />
-              </div>
-              {props.source !== "newUser" && (
-                <div className="row">
-                  <button
-                    type="button"
-                    className="btn btn-danger row mt-2 mb-2"
-                    onClick={() =>
-                      props.deleteUser({ user_id: values.user_id })
-                    }
-                  >
-                    Delete
-                  </button>
-                </div>
-              )}
-            </div>
+            <input
+              type="submit"
+              className="btn btn-success form-control my-2"
+              disabled={isSubmitting}
+            />
+            {props.source !== "newUser" && (
+              <button
+                type="button"
+                className="btn btn-danger form-control mt-2 mb-2"
+                onClick={() => props.deleteUser({ user_id: values.user_id })}
+              >
+                Delete
+              </button>
+            )}
           </form>
         )}
       </Formik>

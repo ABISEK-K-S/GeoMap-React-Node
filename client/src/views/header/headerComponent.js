@@ -5,7 +5,10 @@ function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand " href="#">
-        <Link to="/user" className="text-decoration-none text-muted">
+        <Link
+          to="/user"
+          className="text-decoration-none text-dark font-weight-bold"
+        >
           Welcome!
         </Link>
       </a>
@@ -14,7 +17,7 @@ function Header() {
           <li className="nav-item active" key="nav-item">
             <a className="nav-link">
               {" "}
-              <Link to="/user" className="text-decoration-none">
+              <Link to="/user" className="text-decoration-none text-dark">
                 Users
               </Link>
             </a>
@@ -22,7 +25,7 @@ function Header() {
           <li className="nav-item" key="nav-item2">
             <a className="nav-link">
               {" "}
-              <Link to="/company" className="text-decoration-none">
+              <Link to="/company" className="text-decoration-none text-dark">
                 Company
               </Link>
             </a>
