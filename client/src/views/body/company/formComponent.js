@@ -14,7 +14,8 @@ function FormData(props) {
       : "",
     COORDINATES: props.selectedData?.COORDINATES
       ? props.selectedData.COORDINATES
-      : ""
+      : "",
+    ADDRESS: props.selectedData?.ADDRESS ? props.selectedData.ADDRESS : ""
   });
 
   useEffect(() => {
@@ -32,7 +33,8 @@ function FormData(props) {
         : "",
       COORDINATES: props.selectedData?.COORDINATES
         ? props.selectedData.COORDINATES
-        : ""
+        : "",
+      ADDRESS: props.selectedData?.ADDRESS ? props.selectedData.ADDRESS : ""
     });
   }, [props.selectedData?.COMPANY_NAME]);
 
@@ -44,8 +46,8 @@ function FormData(props) {
 
   return (
     <div className="row">
-      <div className="col-4">
-        <h5 className="text-center custom-bg">User Details</h5>
+      <div className="col-4 border rounded">
+        <h5 className="text-center">User Details</h5>
         <Formik
           enableReinitialize
           initialValues={initialData}
@@ -59,6 +61,9 @@ function FormData(props) {
             }
             if (!values.COORDINATES) {
               errors.COORDINATES = "Coordinates is Required";
+            }
+            if (!values.ADDRESS) {
+              errors.ADDRESS = "Address is Required";
             }
 
             return errors;
@@ -81,115 +86,119 @@ function FormData(props) {
             handleSubmit,
             touched
           }) => (
-            <form onSubmit={handleSubmit} className="text-center">
-              <div className="row">
-                <div className="col col-12  font-weight-bold">Company Name</div>
-                <div className="col">
-                  <input
-                    type="text"
-                    name="COMPANY_NAME"
-                    id="name"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.COMPANY_NAME}
-                  />
-                </div>
-              </div>
+            <form onSubmit={handleSubmit}>
+              <label>Company Name</label>
+              <input
+                type="text"
+                className="form-control"
+                name="COMPANY_NAME"
+                id="name"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.COMPANY_NAME}
+              />
               <div className="text-danger">
                 {errors.COMPANY_NAME &&
                   touched.COMPANY_NAME &&
                   errors.COMPANY_NAME}
               </div>
-              <div className="row">
-                <div className="col col-12  font-weight-bold">Company ID</div>
-                {props.source !== "newUser" && (
-                  <div className="col-12  font-weight-bold">
-                    <span className="badge badge-color m-1">
-                      Id disabled while editing
-                    </span>
-                  </div>
-                )}
-                <div className="col">
-                  <input
-                    type="text"
-                    name="COMPANY_ID"
-                    id="name"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.COMPANY_ID}
-                    disabled={props.source === "newCompany" ? false : true}
-                  />
-                </div>
-              </div>
+              <label>Company ID</label>
+              {props.source !== "newCompany" && (
+                <span class="form-text text-muted">
+                  {" "}
+                  (Id disabled while editing)
+                </span>
+              )}
+              <input
+                type="text"
+                className="form-control"
+                name="COMPANY_ID"
+                id="name"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.COMPANY_ID}
+                disabled={props.source === "newCompany" ? false : true}
+              />
               <div className="text-danger">
                 {errors.COMPANY_ID && touched.COMPANY_ID && errors.COMPANY_ID}
               </div>
-
-              <div className="row">
-                <div className="col col-12  font-weight-bold">CO-ORDINATES</div>
-                <div className="col-12  font-weight-bold">
-                  <span className="badge badge-color m-1">Latitude</span>
-                  <span className="badge badge-color m-1">Longitude</span>
-                </div>
-                <div className="col">
-                  <input
-                    type="text"
-                    name="COORDINATES"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.COORDINATES}
-                  />
-                </div>
+              <label>Address</label>
+              <input
+                type="text"
+                className="form-control"
+                name="ADDRESS"
+                placeholder="Please enter address"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.ADDRESS}
+              />
+              <div className="text-danger">
+                {errors.ADDRESS && touched.ADDRESS && errors.ADDRESS}
               </div>
+              <label>Coordinates</label>
+              <input
+                type="text"
+                className="form-control"
+                name="COORDINATES"
+                placeholder="Latitude,Longitude"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.COORDINATES}
+              />
               <div className="text-danger">
                 {errors.COORDINATES &&
                   touched.COORDINATES &&
                   errors.COORDINATES}
               </div>
 
-              <div className="row">
-                <div>
-                  <input
-                    type="submit"
-                    className="btn btn-primary  mt-2 mb-2"
-                    disabled={isSubmitting}
-                  />
+              <input
+                type="submit"
+                className="btn btn-primary mt-2 mb-2"
+                disabled={isSubmitting}
+              />
+              {props.source !== "newCompany" && (
+                <div className="row">
+                  <button
+                    type="button"
+                    className="btn btn-danger"
+                    onClick={() =>
+                      props.deleteCompany({ COMPANY_ID: values.COMPANY_ID })
+                    }
+                  >
+                    Delete
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-success mt-2"
+                    onClick={() => props.updateUserList(true)}
+                  >
+                    View Employees
+                  </button>
                 </div>
-                {props.source !== "newCompany" && (
-                  <div className="row m-2">
-                    <button
-                      type="button"
-                      className="btn btn-danger mt-2 mb-2"
-                      onClick={() =>
-                        props.deleteCompany({ COMPANY_ID: values.COMPANY_ID })
-                      }
-                    >
-                      Delete
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-success mt-2 mb-2"
-                      onClick={() => props.updateUserList(true)}
-                    >
-                      View Employees
-                    </button>
-                  </div>
-                )}
-              </div>
+              )}
             </form>
           )}
         </Formik>
       </div>
-      {props.source !== "newCompany" && (
-        <div className="col-7">{<MapChart {...props} />}</div>
-      )}
       {props.source !== "newCompany" && props.showUserList && (
-        <div className="col-1">
+        <div className="col-2 border">
           <Employee
             {...props}
             EmployeeList={EmployeeList}
             updateEmployeeList={updateEmployeeList}
           />
+        </div>
+      )}
+      {props.source !== "newCompany" && (
+        <div className="col-6">
+          {
+            <>
+              <MapChart {...props} />
+              <div className=" text-center fw-bold text-success">
+                {props.selectedData?.ADDRESS}
+              </div>
+            </>
+          }
         </div>
       )}
     </div>

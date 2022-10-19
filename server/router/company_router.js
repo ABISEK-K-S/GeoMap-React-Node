@@ -18,8 +18,9 @@ companyRouter.get("/create", (req, res) => {
   let COMPANY_ID = req.query.COMPANY_ID ? req.query.COMPANY_ID : "";
   let COMPANY_NAME = req.query.COMPANY_NAME ? req.query.COMPANY_NAME : "";
   let COORDINATES = req.query.COORDINATES ? req.query.COORDINATES : "";
-  let sql = `INSERT INTO companies(COMPANY_ID, COMPANY_NAME, COORDINATES) 
-  VALUES ("${COMPANY_ID}"," ${COMPANY_NAME}", "${COORDINATES}")`;
+  let ADDRESS = req.query.ADDRESS ? req.query.ADDRESS : "";
+  let sql = `INSERT INTO companies(COMPANY_ID, COMPANY_NAME, COORDINATES,ADDRESS) 
+  VALUES ("${COMPANY_ID}"," ${COMPANY_NAME}", "${COORDINATES}","${ADDRESS}")`;
   console.log(sql);
   let query = connection.query(sql, (err, data) => {
     console.log(data, "output");
@@ -35,9 +36,10 @@ companyRouter.put("/update", (req, res) => {
   let COMPANY_ID = req.query.COMPANY_ID ? req.query.COMPANY_ID : "";
   let COMPANY_NAME = req.query.COMPANY_NAME ? req.query.COMPANY_NAME : "";
   let COORDINATES = req.query.COORDINATES ? req.query.COORDINATES : "";
+  let ADDRESS = req.query.ADDRESS ? req.query.ADDRESS : "";
 
   let sql = `update companies set COMPANY_ID="${COMPANY_ID}",COMPANY_NAME="${COMPANY_NAME}",
-  COORDINATES="${COORDINATES}" where COMPANY_ID="${COMPANY_ID}"`;
+  COORDINATES="${COORDINATES}", ADDRESS="${ADDRESS}" where COMPANY_ID="${COMPANY_ID}"`;
   console.log(sql);
 
   let query = connection.query(sql, (err, data) => {
@@ -54,7 +56,7 @@ companyRouter.delete("/remove-user", (req, res) => {
   let USER_LIST = req.query?.user_list ? req.query.user_list : 0;
   let USER_ID = req.query?.user_id ? req.query.user_id : 0;
   let array = [];
-  const temp = Object.entries(JSON.parse(USER_LIST)).map((data) => {
+  const PASE_DATA = Object.entries(JSON.parse(USER_LIST)).map((data) => {
     if (data[1] !== USER_ID) {
       array.push(`"${data[1]}"`);
     }

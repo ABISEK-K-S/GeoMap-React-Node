@@ -31,18 +31,20 @@ function Company(props) {
 
   return (
     <div className="row">
-      <div className="col-4">
+      <div className="col-2">
         <div className="list-group" id="list-tab" role="tablist">
           {company?.length > 0 &&
-            company.map((data) => {
+            company.map((data, i) => {
               return (
                 <li
-                  className="list-group-item"
+                  className={`list-group-item  bg-${
+                    i % 2 == 0 ? "shade1" : "none"
+                  }`}
                   key={data.id}
                   id="list-home-list"
                   onClick={() => handleClick(data)}
                 >
-                  {data.COMPANY_NAME}
+                  {i + 1}. {data.COMPANY_NAME}
                 </li>
               );
             })}
@@ -55,7 +57,7 @@ function Company(props) {
           Create Company
         </button>
       </div>
-      <div className="col-8">
+      <div className="col-10">
         {showForm && (
           <Form
             {...props}

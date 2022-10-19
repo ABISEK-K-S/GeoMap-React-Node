@@ -29,18 +29,20 @@ function User(props) {
 
   return (
     <div className="row">
-      <div className="col-4">
+      <div className="col-3">
         <div className="list-group" id="list-tab" role="tablist">
           {user?.length > 0 &&
-            user.map((data) => {
+            user.map((data, i) => {
               return (
                 <li
-                  className="list-group-item"
+                  className={`list-group-item  bg-${
+                    i % 2 == 0 ? "shade1" : "none"
+                  }`}
                   key={data.id}
                   id="list-home-list"
                   onClick={() => handleClick(data)}
                 >
-                  {data.first_name} {data.last_name}
+                  {i + 1}. {data.first_name} {data.last_name}
                 </li>
               );
             })}
@@ -53,7 +55,7 @@ function User(props) {
           Create User
         </button>
       </div>
-      <div className="col-8">
+      <div className="col-4">
         {showForm && (
           <Form
             {...props}
