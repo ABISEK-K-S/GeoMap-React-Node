@@ -23,20 +23,16 @@
 
 To run this project, you will need to run server and client separately. Please run the server first.
 
-* To run the server use the commands below,
+* To run the application use: 
 ```bash
-  npm run install
+  docker-compose up -d
 ```
-```bash
-  npm run start
+
+* To access web client:
 ```
-* To run the client use the commands below,
-```bash
-  npm run install
+  http://localhost:3000
 ```
-```bash
-  npm run start
-```
+
 * If the API endpoint is throwing CORS error, Please install as a chrome extension.
 
 https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en
